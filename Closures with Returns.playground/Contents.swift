@@ -15,3 +15,36 @@ func travel(action: (String) -> String) {
 travel { (place: String) -> String in
     return "I'm going to \(place) in my car"
 }
+
+// the reducer below will accept two parameters: an array of numbers and a closure that reduces the array into a single value
+// for example it could add them all together and return the total
+
+func reducer(_ values: [Int], using closure: (Int, Int) -> Int) -> Int {
+    //start with a total equal to the first value
+    var current = values[0]
+    
+    //loop over all the values in array
+    for value in values[1...] {
+        //call the closure with current value and the array element, assign result to current value
+        current = closure(current, value)
+    }
+    
+    // send back the final current value
+    return current
+}
+
+let numbers = [10, 20, 30]
+
+let sum = reducer(numbers) { (runningTotal: Int, next: Int) in
+    runningTotal + next
+}
+
+print(sum)
+
+//the same reducer could be used for multiplication
+
+let multiplied = reducer(numbers) { (runningTotal: Int, next: Int) in
+    runningTotal * next
+}
+
+print(multiplied)
