@@ -25,3 +25,21 @@ struct User2 {
 
 var user2 = User2()
 
+//custom initializers can coexist with the default init by being placed in an extension.
+
+struct Employee {
+    var name: String
+    var yearsActive = 0
+}
+ 
+extension Employee {
+    init() {
+        self.name = "Anonymous"
+        print("Creating an anonymous employee.")
+    }
+}
+
+//creating a named and anonymous employee is now possible.
+
+let john = Employee(name: "John")
+let anon = Employee()
