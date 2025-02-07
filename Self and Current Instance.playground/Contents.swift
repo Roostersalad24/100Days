@@ -14,3 +14,16 @@ struct Person {
     }
 }
 var john = Person(name: "John")
+
+//another exapmle below shows that self is used for parameter names that match the property
+
+struct Student {
+    var name: String
+    var bestfriend: String
+    
+    init(name: String, bestfriend: String) {
+        print("enrolling  \(name) in class")
+        self.name = name
+        self.bestfriend = bestfriend
+    }
+}
